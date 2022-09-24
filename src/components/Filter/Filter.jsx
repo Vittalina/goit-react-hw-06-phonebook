@@ -70,8 +70,4 @@ const Filter = ({ onChange }) => {
   );
 };
 
-// Contacts.propTypes = {
-//   title: PropTypes.string.isRequired,
-// };
-
 export default Filter;
