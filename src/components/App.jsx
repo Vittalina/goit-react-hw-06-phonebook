@@ -3,8 +3,11 @@ import { Box } from 'components/Box';
 import Phonebook from 'components/Phonebook/Phonebook';
 import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
+// import { useSelector, useDispatch } from 'react-redux';
 
 const App = () => {
+  // const contacts = useSelector(state => state.contacts.items);
+  // const dispatch = useDispatch();
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
@@ -24,7 +27,7 @@ const App = () => {
     );
     console.log(filteredNames);
 
-    if (filteredNames.length > 0) {
+    if (filteredNames.length === data.name) {
       alert(`${data.name} is already in contacts`);
       return;
     }
