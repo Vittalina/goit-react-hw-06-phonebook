@@ -2,8 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { ListItem, Button } from 'components/Contacts/Contacts.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/actions';
 
-const Contacts = ({ contacts, onClickDelete }) => {
+const Contacts = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
+  // console.log(contacts);
+
   return (
     <ul>
       {contacts.map(contact => (
@@ -14,7 +20,8 @@ const Contacts = ({ contacts, onClickDelete }) => {
           <Button
             type="button"
             id={contact.number}
-            onClick={() => onClickDelete(contact.id)}
+            onClick={() => dispatch(deleteContact(contact.id))}
+            // onClick={() => onClickDelete(contact.id)}
           >
             Delete
           </Button>

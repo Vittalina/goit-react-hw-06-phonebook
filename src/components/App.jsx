@@ -4,10 +4,14 @@ import Phonebook from 'components/Phonebook/Phonebook';
 import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
 // import { useSelector, useDispatch } from 'react-redux';
+// import { deleteContact } from 'redux/actions';
 
 const App = () => {
   // const contacts = useSelector(state => state.contacts.items);
   // const dispatch = useDispatch();
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
+
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
@@ -62,10 +66,12 @@ const App = () => {
       as="main"
     >
       <h1>Phonebook</h1>
+      {/* <Phonebook /> */}
       <Phonebook onSubmit={onSubmitData} />
       <h2>Contacts</h2>
-
+      {/* <Filter /> */}
       <Filter onChange={filterByName} />
+      {/* <Contacts contacts={contacts} onClick={() => dispatch(deleteContact())} /> */}
       <Contacts contacts={contacts} onClickDelete={onClickDelete} />
     </Box>
   );
