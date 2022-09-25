@@ -8,6 +8,13 @@ import { deleteContact } from 'redux/actions';
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
+  // const filter = useSelector(state => state.filter);
+
+  // const normalizedFilter = filter.toLowerCase();
+  // const filteredNames = contacts.filter(contact =>
+  //   contact.name.toLowerCase().includes(normalizedFilter)
+  // );
+  // console.log(filteredNames);
 
   return (
     <ul>

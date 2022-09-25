@@ -1,27 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { setStatusFilter } from 'redux/actions';
+import { setFilter } from 'redux/actions';
 import { FormField, Input, Label } from 'components/Filter/Filter.styled';
 
 const Filter = () => {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filters.status);
+  const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
   const handleFilterChange = e => {
-    dispatch(setStatusFilter(e.currentTarget.value));
-  };
-
-  const onFilterSubmit = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    const filteredNames = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-    console.log(filteredNames);
+    dispatch(setFilter(e.currentTarget.value));
   };
 
   return (
-    <FormField onSubmit={onFilterSubmit}>
+    <FormField>
       <Label>
         Find contacts by name
         <Input

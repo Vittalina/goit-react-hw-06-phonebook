@@ -5,4 +5,4 @@ console.log(addContact.type);
 
 export const deleteContact = createAction('tasks/deleteContact');
 
-export const setStatusFilter = createAction('filters/setStatusFilter');
+export const setFilter = createAction('filters/setStatusFilter');

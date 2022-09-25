@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { addContact, deleteContact, setStatusFilter } from './actions';
+import { addContact, deleteContact, setFilter } from './actions';
 
 const contactsInitialState = [];
 
@@ -15,10 +15,7 @@ export const contactsReducer = createReducer(contactsInitialState, {
 const filtersInitialState = {};
 
 export const filtersReducer = createReducer(filtersInitialState, {
-  [setStatusFilter]: (state, action) => {
-    return {
-      ...state,
-      status: action.payload,
-    };
+  [setFilter]: (state, action) => {
+    state.filter = action.payload;
   },
 });
