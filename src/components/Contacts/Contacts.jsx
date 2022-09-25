@@ -8,7 +8,6 @@ import { deleteContact } from 'redux/actions';
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  // console.log(contacts);
 
   return (
     <ul>

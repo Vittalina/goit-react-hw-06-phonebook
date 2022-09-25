@@ -1,57 +1,34 @@
-import { useState, useEffect } from 'react';
 import { Box } from 'components/Box';
 import Phonebook from 'components/Phonebook/Phonebook';
 import Contacts from 'components/Contacts/Contacts';
 import Filter from 'components/Filter/Filter';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { deleteContact } from 'redux/actions';
 
 const App = () => {
-  // const contacts = useSelector(state => state.contacts.items);
-  // const dispatch = useDispatch();
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
+  // const onSubmitData = data => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
+  //   const filteredNames = contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  //   console.log(filteredNames);
 
-  useEffect(() => {
-    setContacts(JSON.parse(window.localStorage.getItem('contacts')));
-  }, []);
+  //   if (filteredNames.length === data.name) {
+  //     alert(`${data.name} is already in contacts`);
+  //     return;
+  //   }
+  //   setContacts(prevState => {
+  //     return [
+  //       ...prevState,
+  //       { name: data.name, number: data.number, id: data.id },
+  //     ];
+  //   });
+  // };
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const onSubmitData = data => {
-    const normalizedFilter = filter.toLowerCase();
-
-    const filteredNames = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-    console.log(filteredNames);
-
-    if (filteredNames.length === data.name) {
-      alert(`${data.name} is already in contacts`);
-      return;
-    }
-    setContacts(prevState => {
-      return [
-        ...prevState,
-        { name: data.name, number: data.number, id: data.id },
-      ];
-    });
-  };
-
-  const filterByName = value => {
-    setFilter({
-      filter: value.filter,
-    });
-  };
-
-  const onClickDelete = id => {
-    setContacts(contacts.filter(contact => contact.id !== id));
-  };
+  // const filterByName = value => {
+  //   setFilter({
+  //     filter: value.filter,
+  //   });
+  // };
 
   return (
     <Box
@@ -66,13 +43,10 @@ const App = () => {
       as="main"
     >
       <h1>Phonebook</h1>
-      {/* <Phonebook /> */}
-      <Phonebook onSubmit={onSubmitData} />
+      <Phonebook />
       <h2>Contacts</h2>
-      {/* <Filter /> */}
-      <Filter onChange={filterByName} />
-      {/* <Contacts contacts={contacts} onClick={() => dispatch(deleteContact())} /> */}
-      <Contacts contacts={contacts} onClickDelete={onClickDelete} />
+      <Filter />
+      <Contacts />
     </Box>
   );
 };
