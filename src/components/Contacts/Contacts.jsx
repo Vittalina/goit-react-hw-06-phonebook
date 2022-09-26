@@ -8,17 +8,20 @@ import { deleteContact } from 'redux/actions';
 const Contacts = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-  // const filter = useSelector(state => state.filter);
+  console.log(contacts);
 
-  // const normalizedFilter = filter.toLowerCase();
-  // const filteredNames = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter)
-  // );
-  // console.log(filteredNames);
+  const filter = useSelector(state => state.filters);
+  console.log(filter);
+
+  const normalizedFilter = filter.toLowerCase();
+  const filteredNames = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
+  console.log(filteredNames);
 
   return (
     <ul>
-      {contacts.map(contact => (
+      {filteredNames.map(contact => (
         <ListItem key={nanoid()}>
           <span>
             {contact.name}: {contact.number}
